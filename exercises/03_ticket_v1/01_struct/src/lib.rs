@@ -8,6 +8,19 @@
 #[cfg(test)]
 mod tests {
     use super::*;
+    trait IsAvailable {
+        fn is_available(&self) -> bool;
+    }
+    struct Order {
+        price: u32,
+        quantity: u32,
+    }
+
+    impl IsAvailable for Order {
+        fn is_available(&self) -> bool {
+            self.quantity > 0
+        }
+    }
 
     #[test]
     fn test_order_is_available() {
